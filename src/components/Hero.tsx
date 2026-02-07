@@ -1,11 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import heroImage from "@/assets/hero-laundry.jpg";
 
 const Hero = () => {
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const navigate = useNavigate();
 
   const scrollToServices = () => {
     document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
@@ -43,7 +42,7 @@ const Hero = () => {
             <Button 
               variant="hero" 
               size="lg"
-              onClick={scrollToContact}
+              onClick={() => navigate("/signup")}
               className="group"
             >
               Get Started
