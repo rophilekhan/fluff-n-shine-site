@@ -1,43 +1,53 @@
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Shirt, Wind, Droplets, Sparkles, Package, Clock } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Shirt, Wind, Droplets, Sparkles, Package, Clock, ArrowRight } from "lucide-react";
 
 const Services = () => {
+  const navigate = useNavigate();
+
   const services = [
     {
+      id: "wash-fold",
       icon: Shirt,
       title: "Wash & Fold",
       description: "Professional washing, drying, and folding service. Your clothes returned fresh and neatly organized.",
       price: "From $1.50/lb"
     },
     {
+      id: "dry-cleaning",
       icon: Wind,
       title: "Dry Cleaning",
       description: "Expert dry cleaning for delicate fabrics and special garments. Gentle care for your finest clothes.",
       price: "From $8/item"
     },
     {
+      id: null,
       icon: Droplets,
       title: "Stain Removal",
       description: "Advanced stain treatment using eco-friendly solutions. We tackle even the toughest stains.",
       price: "Included"
     },
     {
+      id: "ironing",
       icon: Sparkles,
-      title: "Premium Care",
-      description: "Special handling for luxury items and delicate fabrics. Hand-wash and air-dry options available.",
-      price: "From $15/item"
+      title: "Ironing & Pressing",
+      description: "Crisp, wrinkle-free clothes ready to wear. Perfect for business attire and special occasions.",
+      price: "From $3/item"
     },
     {
+      id: null,
       icon: Package,
       title: "Pickup & Delivery",
       description: "Free pickup and delivery service at your convenience. Schedule online in minutes.",
       price: "Free"
     },
     {
+      id: "eco-friendly",
       icon: Clock,
-      title: "Same-Day Service",
-      description: "Need it fast? Our same-day service ensures your clothes are ready when you need them.",
-      price: "+$10"
+      title: "Eco-Friendly Wash",
+      description: "Sustainable cleaning with organic products. Perfect for those who care about the environment.",
+      price: "From $2/lb"
     }
   ];
 
@@ -74,8 +84,21 @@ const Services = () => {
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-2xl font-bold text-primary">
-                    {service.price}
+                  <div className="flex items-center justify-between">
+                    <div className="text-2xl font-bold text-primary">
+                      {service.price}
+                    </div>
+                    {service.id && (
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="group/btn"
+                        onClick={() => navigate(`/services/${service.id}`)}
+                      >
+                        Learn More
+                        <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>

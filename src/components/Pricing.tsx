@@ -1,11 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Check } from "lucide-react";
 
 const Pricing = () => {
-  const scrollToContact = () => {
-    document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-  };
+  const navigate = useNavigate();
 
   const plans = [
     {
@@ -111,7 +110,7 @@ const Pricing = () => {
                   variant={plan.popular ? "hero" : "outline"}
                   className="w-full"
                   size="lg"
-                  onClick={scrollToContact}
+                  onClick={() => navigate("/plans")}
                 >
                   Get Started
                 </Button>
